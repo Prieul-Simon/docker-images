@@ -1,0 +1,50 @@
+# #######################################
+# Docs:
+# https://medium.com/@depot.dev/how-to-use-docker-layer-caching-in-github-actions-bee1f7b19093
+# #######################################
+name: Build and Push Docker Image (https://github.com/w4/bin) to Docker Hub
+
+on:
+  workflow_dispatch:
+
+env:
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  DOCKERHUB_TAG: prieul/w4-bin:2.0.2
+  CACHE_FROM_REF: prieul/w4-bin:buildcache
+  CACHE_TO_REF: prieul/w4-bin:buildcache
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-24.04
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        repository: 'w4/bin'
+        ref: 'main'
+
+    - name: Set up QEMU
+      uses: docker/setup-qemu-action@v3
+      with:
+        platforms: arm64
+
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3
+
+    - name: Login to Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ env.DOCKERHUB_USERNAME }}
+        password: ${{ env.DOCKERHUB_TOKEN }}
+
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        file: Dockerfile
+        platforms: linux/arm64
+        push: true
+        tags: ${{ env.DOCKERHUB_TAG }}
+        cache-from: type=registry,ref=${{ env.CACHE_FROM_REF }}
+        cache-to: type=registry,mode=max,ref=${{ env.CACHE_TO_REF }}
