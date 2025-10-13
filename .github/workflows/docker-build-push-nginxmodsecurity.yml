@@ -2,7 +2,8 @@
 # Docs:
 # https://medium.com/@depot.dev/how-to-use-docker-layer-caching-in-github-actions-bee1f7b19093
 # #######################################
-name: Build and Push Docker Image of nginx (https://nginx.org/) with modsecurity (https://github.com/owasp-modsecurity/ModSecurity-nginx) included to Docker Hub
+# Build and Push Docker Image of nginx (https://nginx.org) with modsecurity (https://github.com/owasp-modsecurity/ModSecurity-nginx) included
+name: Build and Push Docker Image of nginx-with modsecurity to Docker Hub
 
 on:
   workflow_dispatch:
