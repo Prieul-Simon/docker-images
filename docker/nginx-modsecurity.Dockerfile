@@ -5,8 +5,9 @@
 # #######################################
 
 # FROM nginx:stable AS base
-# nginx version 1.29.0
-FROM nginx@sha256:f5c017fb33c6db484545793ffb67db51cdd7daebee472104612f73a85063f889 AS base
+# nginx version 1.29.2
+# https://hub.docker.com/layers/library/nginx/1.29.2/images
+FROM nginx@sha256:ac03974aaaeb5e3fbe2ab74d7f2badf1388596f6877cbacf78af3617addbba9a AS base
 WORKDIR /etc/nginx/
 
 FROM base AS compilemodsecurity
