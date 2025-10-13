@@ -13,8 +13,8 @@ WORKDIR /etc/nginx/
 FROM base AS compilemodsecurity
 
 # Install utilities
-RUN apt update && \
-    apt install -y git wget
+RUN apk update && \
+    apk add -y git wget
 
 # Clone modsecurity
 WORKDIR /opt/ModSecurity/
@@ -31,7 +31,7 @@ RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -O nginx.tar.
     rm nginx.tar.gz
 
 # Install compile-time dependencies
-RUN apt install -y \
+RUN apk add -y \
     g++ \
     apt-utils \
     autoconf \
@@ -67,8 +67,8 @@ RUN cd /opt/"nginx-${NGINX_VERSION}" && \
 FROM base AS release
 
 # Install runtime dependencies
-RUN apt update && \
-    apt install -y \
+RUN apk update && \
+    apk add -y \
         libyajl2
 
 # Copy modsecurity module
