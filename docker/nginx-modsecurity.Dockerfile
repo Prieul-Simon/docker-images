@@ -5,9 +5,9 @@
 # #######################################
 
 # FROM nginx:stable AS base
-# nginx version 1.29.2-alpine3.22-slim
-# https://hub.docker.com/layers/library/nginx/1.29.2/images
-FROM nginx@sha256:67e8a9250b68816414f7dd74b8c3c544729ae14201b263cef909a70714d0caae AS base
+# nginx version 1.29.5
+# https://hub.docker.com/layers/library/nginx/1.29.5/images/sha256-f676e65a102e4eb6b30ca6ece7300e1ad72bdd60758b8e4e5072c45b86979916
+FROM nginx@sha256:f676e65a102e4eb6b30ca6ece7300e1ad72bdd60758b8e4e5072c45b86979916 AS base
 WORKDIR /etc/nginx/
 
 FROM base AS compilemodsecurity
@@ -24,7 +24,7 @@ RUN git clone --depth 1 -b v3/master --single-branch https://github.com/SpiderLa
 WORKDIR /opt/ModSecurity-nginx/
 RUN git clone --depth 1 --single-branch https://github.com/SpiderLabs/ModSecurity-nginx .
 
-# Dowload nginx source (will be used to recompile nginx with dynamic module)
+# Download nginx source (will be used to recompile nginx with dynamic module)
 WORKDIR /opt/
 RUN wget "http://nginx.org/download/nginx-${NGINX_VERSION}.tar.gz" -O nginx.tar.gz && \
     tar -xvzmf nginx.tar.gz && \

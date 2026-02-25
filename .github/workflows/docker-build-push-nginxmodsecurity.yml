@@ -11,9 +11,9 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  DOCKERHUB_TAG: prieul/nginx-modsecurity:1.29.2-alpine3.22-slim
-  CACHE_FROM_REF: prieul/nginx-modsecurity:buildcache-1.29.2-alpine3.22-slim
-  CACHE_TO_REF: prieul/nginx-modsecurity:buildcache-1.29.2-alpine3.22-slim
+  DOCKERHUB_TAG: prieul/nginx-modsecurity:1.29.5-debian
+  CACHE_FROM_REF: prieul/nginx-modsecurity:buildcache-1.29.5-debian
+  CACHE_TO_REF: prieul/nginx-modsecurity:buildcache-1.29.5-debian
 
 jobs:
   build-and-push:
