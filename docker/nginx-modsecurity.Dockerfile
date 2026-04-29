@@ -50,7 +50,7 @@ RUN apt install -y \
 # Compile modsecurity
 WORKDIR /opt/ModSecurity/
 RUN git submodule init && \
-    git submodule update && \
+    git submodule update --init --recursive && \
     ./build.sh && \
     ./configure --with-pcre2 && \
     make && \
