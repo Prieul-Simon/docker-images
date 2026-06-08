@@ -17,9 +17,9 @@ jobs:
   build-and-push:
     runs-on: ubuntu-24.04
     env:
-      DOCKERHUB_TAG: prieul/nginx-modsecurity:${{ env.NGINX_VERSION }}-debian
-      CACHE_FROM_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
-      CACHE_TO_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
+      DOCKERHUB_TAG: "prieul/nginx-modsecurity:${{ env.NGINX_VERSION }}-debian"
+      CACHE_FROM_REF: "prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian"
+      CACHE_TO_REF: "prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian"
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
