@@ -5,9 +5,9 @@
 # #######################################
 
 # FROM nginx:stable AS base
-# nginx version 1.29.8
-# https://hub.docker.com/layers/library/nginx/1.29.8/images/sha256-ccd6364963d396aacea6e2b617f8cbc73a845cea0e3c6b109df636fed6c9094c
-FROM nginx@sha256:ccd6364963d396aacea6e2b617f8cbc73a845cea0e3c6b109df636fed6c9094c AS base
+# nginx version 1.30.2 (linux/arm64/v8)
+# https://hub.docker.com/layers/library/nginx/1.30.2/images/sha256-c6b428e308900fef010bf3592184bcc747aaf495617eb3601191d58004e2eaeb
+FROM nginx@sha256:c6b428e308900fef010bf3592184bcc747aaf495617eb3601191d58004e2eaeb AS base
 WORKDIR /etc/nginx/
 
 FROM base AS compilemodsecurity
