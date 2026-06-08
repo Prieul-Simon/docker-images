@@ -16,10 +16,6 @@ env:
 jobs:
   build-and-push:
     runs-on: ubuntu-24.04
-    env:
-      DOCKERHUB_TAG: "prieul/nginx-modsecurity:${{ env.NGINX_VERSION }}-debian"
-      CACHE_FROM_REF: "prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian"
-      CACHE_TO_REF: "prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian"
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -42,6 +38,10 @@ jobs:
 
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
+      env:
+        DOCKERHUB_TAG: prieul/nginx-modsecurity:${{ env.DOCKERHUB_USERNAME }}-debian
+        CACHE_FROM_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
+        CACHE_TO_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
       with:
         context: .
         file: docker/nginx-modsecurity.Dockerfile
