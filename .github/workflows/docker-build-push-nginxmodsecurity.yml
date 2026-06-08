@@ -39,7 +39,7 @@ jobs:
     - name: Build and push Docker image
       uses: docker/build-push-action@v6
       env:
-        DOCKERHUB_TAG: prieul/nginx-modsecurity:${{ env.DOCKERHUB_USERNAME }}-debian
+        DOCKERHUB_TAG: prieul/nginx-modsecurity:${{ env.NGINX_VERSION }}-debian
         CACHE_FROM_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
         CACHE_TO_REF: prieul/nginx-modsecurity:buildcache-${{ env.NGINX_VERSION }}-debian
       with:
