@@ -11,7 +11,7 @@ on:
 env:
   DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
   DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
-  NGINX_VERSION: "1.30.3"
+  NGINX_VERSION: "1.30.4"
 
 jobs:
   build-and-push:
