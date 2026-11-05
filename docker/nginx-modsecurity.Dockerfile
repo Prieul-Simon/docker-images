@@ -5,10 +5,10 @@
 # #######################################
 
 # FROM nginx:stable AS base
-# nginx version 1.30.5 (linux/arm64/v8)
+# nginx version 1.30.6 (linux/arm64/v8)
 # So as to bump nginx version, update the sha256 of the target image and update "NGINX_VERSION" in .github/workflows/docker-build-push-nginxmodsecurity.yml
-# https://hub.docker.com/layers/library/nginx/1.30.5/images/sha256-444d474369737d45215e4c3019f87e3f657b6a9c09e6ec1e9b97a5f161223bac
-FROM nginx@sha256:444d474369737d45215e4c3019f87e3f657b6a9c09e6ec1e9b97a5f161223bac AS base
+# https://hub.docker.com/layers/library/nginx/1.30.6/images/sha256-7741be97ccd75a002a9a6a86a50fda07fdc990b71c486ee170af517749f0aef1
+FROM nginx@sha256:7741be97ccd75a002a9a6a86a50fda07fdc990b71c486ee170af517749f0aef1 AS base
 WORKDIR /etc/nginx/
 
 FROM base AS compilemodsecurity
